@@ -1,0 +1,15 @@
+<!--index.wxml-->
+<view class="container">
+  <scroll-view scroll-x="true" class="category">
+    <view class="item {{currentIndex==0?'active':''}}" data-index="0" bindtap="switchCategory">美容院</view>
+    <view class="item {{currentIndex==1?'active':''}}" data-index="1" bindtap="switchCategory">美妆店</view>
+    <view class="item {{currentIndex==2?'active':''}}" data-index="2" bindtap="switchCategory">电影院</view>
+    <view class="item {{currentIndex==3?'active':''}}" data-index="3" bindtap="switchCategory">餐厅</view>
+    <view class="item {{currentIndex==4?'active':''}}" data-index="4" bindtap="switchCategory">KTV</view>
+    <view class="item {{currentIndex==5?'active':''}}" data-index="5" bindtap="switchCategory">手工店</view>
+    <view class="item {{currentIndex==6?'active':''}}" data-index="6" bindtap="switchCategory">美食</view>
+  </scroll-view>
+  <view class="map-container">
+     <map id="map" longitude="114.31" latitude="30.52" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
+  </view>
+</view>

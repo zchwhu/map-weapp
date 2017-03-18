@@ -1,0 +1,50 @@
+/* pages/welcome/welcome.wxss */
+page{
+    height: 100%;
+    background: #FFEBEB;
+    color: #F69;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+}
+
+.logo{
+    width: 200rpx;
+    height: 200rpx;
+    margin: 160rpx auto 0;
+}
+
+.welcome{
+    margin-top: 160rpx;
+    text-align: center;
+    font-size: 40rpx;
+    font-weight: 700;
+}
+
+.enter-container{
+    width: 200rpx;
+    height: 80rpx;
+    margin: 200rpx auto 0;
+    text-align: center;
+    border: 1px solid #F69;
+    border-radius: 5px;
+}
+
+.enter{
+    line-height: 80rpx;
+    font-size: 24rpx;
+    font-weight: 700;
+    letter-spacing: 3rpx;
+}
+
+
+.footer{
+    position: fixed;
+    bottom: 100rpx;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 26rpx;
+}
