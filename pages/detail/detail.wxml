@@ -2,20 +2,20 @@
 <view class="container">
     <image src="/images/whu.jpg" class="head-img" bindtap="previewImg"></image>
     <view class="name">
-        <text>武汉大学</text>
+        <text>{{location.name}}</text>
     </view>
     <view class="info">
         <view class="item">
             <image src="/images/recom.png"></image>
             <text>推荐指数</text>
         </view>
-        <view class="item" bindtap="showPos">
-        <image src="/images/pos.png"></image>
-            <text>具体位置：武昌区八一路</text>
+        <view class="item" bindtap="showPos" data-long="{{location.longitude}}" data-lati="{{location.latitude}}">
+            <image src="/images/pos.png"></image>
+            <text>具体位置：{{location.position}}</text>
         </view>
-        <view class="item" bindtap="callTel">
-        <image src="/images/phone.png"></image>
-            <text>联系方式：16909281988</text>
+        <view class="item" bindtap="callTel" data-phonenum="{{location.phonenum}}">
+            <image src="/images/phone.png"></image>
+            <text>联系方式：{{location.phonenum}}</text>
         </view>
     </view>
     <view class="detail">
@@ -23,6 +23,6 @@
             <image src="/images/intro.png"></image>
             <text>详细介绍</text>
         </view>
-        <text class="content">武汉大学（Wuhan University），简称“武大”，是一所位于湖北武汉市的综合研究型大学，其办学源头溯源于清朝末期1893年湖广总督张之洞奏请清政府创办的自强学堂，已有一百多年历史，1913年改名国立武昌高等师范学校， 1926年组建国立武昌中山大学，1928年定名国立武汉大学，是民国四大名校之一。1949年新中国成立更名武汉大学沿用至今。</text>
+        <text class="content">{{location.introduction}}</text>
     </view>
 </view>

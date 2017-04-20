@@ -37,16 +37,23 @@ Page{
 .item{
     display: flex;
     flex-direction: row;
-    line-height: 80rpx;
+    align-items: flex-start;
+    padding: 10rpx 0;
     font-size: 28rpx;
     border-bottom: 1px solid #eee;
 }
 
 .item image{
+    flex-basis: 40rpx;
+    margin-top: 4rpx;
+    margin-right: 6rpx;
     width: 40rpx;
     height: 40rpx;
-    margin-top: 20rpx;
-    margin-right: 10rpx;
+}
+
+.item text{
+    line-height: 50rpx;
+    flex: 1;
 }
 
 .detail{
