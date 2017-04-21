@@ -6,6 +6,6 @@
     </block>
   </scroll-view>
   <view class="map-container">
-     <map id="map" longitude="114.31" latitude="30.52" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
+     <map id="map" show-location longitude="114.31" latitude="30.52" scale="14"  bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
   </view>
 </view>
