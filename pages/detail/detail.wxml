@@ -1,6 +1,7 @@
 <!--pages/detail/detail.wxml-->
 <view class="container">
-    <image src="/images/whu.jpg" class="head-img" bindtap="previewImg"></image>
+    <image wx:if="{{location.imgSrc}}" src="{{location.imgSrc}}" class="head-img" bindtap="previewImg" data-src="{{location.imgSrc}}"></image>
+    <image wx:else src="../../images/headimg_default.png" class="head-img" bindtap="previewImg" data-src="../../images/headimg_default.png"></image>
     <view class="name">
         <text>{{location.name}}</text>
     </view>
@@ -13,12 +14,13 @@
             <image src="/images/pos.png"></image>
             <text>具体位置：{{location.position}}</text>
         </view>
-        <view class="item" bindtap="callTel" data-phonenum="{{location.phonenum}}">
+        <view wx:if="{{location.phonenum}}" class="item" bindtap="callTel" data-phonenum="{{location.phonenum}}">
             <image src="/images/phone.png"></image>
             <text>联系方式：{{location.phonenum}}</text>
         </view>
     </view>
-    <view class="detail">
+
+    <view class="detail" wx:if="{{location.introduction}}">
         <view class="title">
             <image src="/images/intro.png"></image>
             <text>详细介绍</text>
