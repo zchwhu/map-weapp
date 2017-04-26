@@ -1,22 +1,27 @@
 <!--pages/detail/detail.wxml-->
+<import src="stars/stars-template.wxml" />
+
 <view class="container">
     <image wx:if="{{location.imgSrc}}" src="{{location.imgSrc}}" class="head-img" bindtap="previewImg" data-src="{{location.imgSrc}}"></image>
-    <image wx:else src="../../images/headimg_default.png" class="head-img" bindtap="previewImg" data-src="../../images/headimg_default.png"></image>
+    <image wx:else src="../../images/headimg_default.png" class="head-img"></image>
     <view class="name">
         <text>{{location.name}}</text>
     </view>
     <view class="info">
-        <view class="item">
+        <view class="item" wx:if="{{location.stars.length}}">
             <image src="/images/recom.png"></image>
-            <text>推荐指数</text>
+            <view class="content">
+                <text>推荐指数</text>
+                <template is="stars" data="{{stars:location.stars}}"/>
+            </view>
         </view>
-        <view class="item" bindtap="showPos" data-long="{{location.longitude}}" data-lati="{{location.latitude}}">
+        <view class="item" catchtap="showPos" data-name="{{location.name}}" data-long="{{location.longitude}}" data-lati="{{location.latitude}}">
             <image src="/images/pos.png"></image>
-            <text>具体位置：{{location.position}}</text>
+            <text class="content">具体位置：{{location.position}}</text>
         </view>
         <view wx:if="{{location.phonenum}}" class="item" bindtap="callTel" data-phonenum="{{location.phonenum}}">
             <image src="/images/phone.png"></image>
-            <text>联系方式：{{location.phonenum}}</text>
+            <text class="content">联系方式：{{location.phonenum}}</text>
         </view>
     </view>
 
@@ -25,6 +30,6 @@
             <image src="/images/intro.png"></image>
             <text>详细介绍</text>
         </view>
-        <text class="content">{{location.introduction}}</text>
+        <text class="intro">{{location.introduction}}</text>
     </view>
 </view>
