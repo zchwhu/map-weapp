@@ -1,7 +1,7 @@
 // pages/welcome/welcome.js
 Page({
   enter: function(event){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../index/index',
       success: function(res){
         // success
