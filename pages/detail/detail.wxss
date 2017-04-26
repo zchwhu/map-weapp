@@ -1,4 +1,6 @@
 /* pages/detail/detail.wxss */
+@import "stars/stars-template.wxss";
+
 Page{
     background: #efefef;
     color: #666;
@@ -19,6 +21,7 @@ Page{
     padding-left: 20rpx;
     line-height: 80rpx;
     color: #f69;
+    font-size: 42rpx;
     font-weight: bolder;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -31,7 +34,7 @@ Page{
     padding-left: 20rpx;
     background-color: #fff;
     border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd; 
+    border-bottom: 1px solid #ddd;
 }
 
 .item{
@@ -44,22 +47,24 @@ Page{
 }
 
 .item image{
-    flex-basis: 40rpx;
+    flex-basis: 50rpx;
     margin-top: 4rpx;
-    margin-right: 6rpx;
-    width: 40rpx;
-    height: 40rpx;
+    margin-right: 8rpx;
+    width: 45rpx;
+    height: 45rpx;
 }
 
-.item text{
-    line-height: 50rpx;
+.item .content{
+    display: flex;
+    line-height: 55rpx;
     flex: 1;
+    font-size: 34rpx;
 }
 
 .detail{
     display: flex;
     flex-direction: column;
-    padding-left: 20rpx; 
+    padding-left: 20rpx;
     background-color: #fff;
     border-top: 1px solid #ddd;
 }
@@ -68,7 +73,7 @@ Page{
     display: flex;
     flex-direction: row;
     line-height: 80rpx;
-    font-size: 28rpx;
+    font-size: 36rpx;
     border-bottom: 1px solid #eee;
 }
 
@@ -79,8 +84,9 @@ Page{
     margin-right: 10rpx;
 }
 
-.content{
-    padding: 20rpx 20rpx 20rpx 0;
-    line-height: 40rpx;
-    font-size: 26rpx;
+.intro{
+    padding: 20rpx 20rpx 20rpx 5rpx;
+    line-height: 48rpx;
+    font-size: 32rpx;
+    text-align: justify;
 }
