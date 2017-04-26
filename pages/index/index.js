@@ -3,13 +3,50 @@
 var app = getApp();
 Page({
     data: {
+        defaultLongitude:114.31,
+        defaultLatitude:30.52,
         currentIndex: 1, //类别索引值
         types: [], //类别数据
-        markers: [] //标记数据
+        markers: [], //标记数据
+        controls: [{
+            id: 1,
+            iconPath: '../../images/women.png',
+            position: {
+                left: 10,
+                top: 450 - 50,
+                width: 50,
+                height: 50
+            },
+            clickable: true
+        }]
     },
 
     onLoad: function(event){
         var that = this;
+        this.mapCtx = wx.createMapContext('herpinkMap');
+        wx.getLocation({
+            type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+            success: function(res){
+                // success
+                var latitude = res.latitude;
+                var longitude = res.longitude;
+                that.setData({
+                    defaultLongitude: longitude,
+                    defaultLatitude: latitude
+                })
+            },
+            fail: function() {
+                // fail
+                wx.showModal({
+                    title: 'Herpink提示您',
+                    content: '您未开启手机定位服务，可能会影响您部分功能的正常使用',
+                    confirmColor: '#f69'
+                })
+            },
+            complete: function() {
+                // complete
+            }
+        })
         wx.request({
             url: 'http://202.114.70.53:8082/HerPinkMap/Anon/getCates',
             data: {},
@@ -38,6 +75,7 @@ Page({
             var temp = {};
             temp.id = key;
             temp.name = data[key][0];
+
             var subUrl = 'HerPinkMap'+data[key][1];
             temp.icon = app.globalData.baseUrl + subUrl;
             types.push(temp);
@@ -46,23 +84,23 @@ Page({
             types: types,
             currentIndex:types[0].id
         })
+        console.log(types);
     },
 
     //首次加载时获取默认的第一个类别的标记
     getDefaultMarkers: function(data){
         var firstPos = [];
         console.log(this.data.types[0].icon);
-        var iconPath = this.data.types[0].icon;
+        var iconPath = '../../images/location.png';
         for(var key in data){
             var temp = {
-                width: 25,
-                height: 25,
+                width: 40,
+                height: 40,
                 iconPath: iconPath
             };
             temp.id = key;
             temp.latitude = data[key][0];
             temp.longitude = data[key][1];
-            temp.title = 'T.I.T 创意园';
             firstPos.push(temp);
         }
         this.setData({
@@ -74,12 +112,10 @@ Page({
         var categoryData = data[0];
         var positionData = data[1];
         var positions = [];
-        var iconPath = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1492765558892&di=42e2d94bf89e73d0da273966685251c8&imgtype=0&src=http%3A%2F%2Fpic2.cxtuku.com%2F00%2F07%2F42%2Fb7078209db72.jpg';
         for(var key in positionData){
             var temp = {
                 width: 25,
-                height: 25,
-                iconPath: iconPath
+                height: 25
             };
             temp.id = key;
             temp.latitude = positionData[key][0];
@@ -107,8 +143,26 @@ Page({
             }
         })
     },
+
     controltap(e) {
-        console.log(e.markerLatitude);
+        var that = this;
+        wx.getLocation({
+            type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+            success: function(res){
+                that.mapCtx.moveToLocation();
+            },
+            fail: function() {
+                wx.showModal({
+                    title: 'Herpink提示您',
+                    content: '无法获取您的当前位置，请检查是否开启了定位服务',
+                    cancelText: '',
+                    confirmColor: '#f69'
+                })
+            },
+            complete: function() {
+                // complete
+            }
+        })
     },
 
     //切换类别
