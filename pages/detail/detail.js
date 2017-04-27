@@ -2,13 +2,15 @@
 var app = getApp();
 Page({
     data: {
-        location:{}
+        location:{} // 存储地点信息
     },
     onLoad: function (options) {
         // 页面初始化 options为页面跳转所带来的参数
         var locaId = options.id;
         var baseUrl = app.globalData.baseUrl;
         var that = this;
+
+        // 请求地点信息
         wx.request({
             url: baseUrl+'HerPinkMap/Anon/locaDetail?locaId='+locaId,
             data: {},
@@ -16,7 +18,6 @@ Page({
             // header: {}, // 设置请求的 header
             success: function(res){
                 // success
-                console.log(res.data);
                 var locaData = res.data;
                 that.processLocaData(locaData);
             },
@@ -28,21 +29,28 @@ Page({
             }
         })
     },
+
+    //处理地点信息
     processLocaData: function(data){
         var locationInfo = {};
         var baseUrl = app.globalData.baseUrl+'HerPinkMap';
-        var stars = [];
+        var stars = []; //存储地点推荐星数
+
+        // 如果地点不含有图片，则将链接设为空
         if(data.locaPic!==null){
-            locationInfo.imgSrc = baseUrl+data.locaPic;
+            locationInfo.imgSrc = baseUrl+data.locaPic; //地点图片链接
         }else{
             locationInfo.imgSrc = '';
         }
-        locationInfo.name = data.locaName;
-        locationInfo.position = data.locaAddress;
-        locationInfo.phonenum = data.locaPhone;
-        locationInfo.introduction = data.locaDes;
-        locationInfo.latitude = data.locaLatitude;
-        locationInfo.longitude = data.locaLongitude;
+        locationInfo.name = data.locaName; //地点名称
+        locationInfo.position = data.locaAddress; // 地点位置
+        locationInfo.phonenum = data.locaPhone; // 地点地理位置
+        locationInfo.introduction = data.locaDes; // 地点介绍
+        locationInfo.latitude = data.locaLatitude; // 地点经度
+        locationInfo.longitude = data.locaLongitude; // 地点纬度
+
+        // 注意这里的的评分是一个字符串，需要先转化为数字
+        // 如果不能转化为数字，则不进行处理
         var score = parseInt(data.locaScore);
         if(!isNaN(score)){
             var i = 0;
@@ -55,7 +63,7 @@ Page({
                 i++;
             }
         }
-        locationInfo.stars = stars;
+        locationInfo.stars = stars; // 地点星级
         this.setData({
             location: locationInfo
         })
@@ -89,6 +97,7 @@ Page({
 
     //打开内置地图导航
     showPos: function(event){
+        //注意这里的经纬度信息，需要转化为数值
         var locaLati = parseFloat(event.currentTarget.dataset.lati);
         var locaLong = parseFloat(event.currentTarget.dataset.long);
         var name = event.currentTarget.dataset.name;

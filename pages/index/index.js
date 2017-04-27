@@ -3,8 +3,8 @@
 var app = getApp();
 Page({
     data: {
-        defaultLongitude:114.31,
-        defaultLatitude:30.52,
+        defaultLongitude:114.31, //默认的武汉市经度
+        defaultLatitude:30.52, //默认的武汉市纬度
         currentIndex: 1, //类别索引值
         types: [], //类别数据
         markers: [], //标记数据
@@ -23,7 +23,10 @@ Page({
 
     onLoad: function(event){
         var that = this;
+        //获取地图上下文环境，供之后移动到当前位置使用
         this.mapCtx = wx.createMapContext('herpinkMap');
+
+        //页面载入时，获取用户当前位置，如果成功，则将地图的中心设置为用户当前位置，如果失败，则提示用户打开定位
         wx.getLocation({
             type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
             success: function(res){
@@ -47,6 +50,8 @@ Page({
                 // complete
             }
         })
+
+        // 请求类别数据
         wx.request({
             url: 'http://202.114.70.53:8082/HerPinkMap/Anon/getCates',
             data: {},
@@ -54,8 +59,8 @@ Page({
             // header: {}, // 设置请求的 header
             success: function(res){
                 // success
-                var type = res.data[0];
-                var firstTypePos = res.data[1];
+                var type = res.data[0]; //数组的第一个元素是类别
+                var firstTypePos = res.data[1]; //数组的第二个元素是第一个类别下的地点信息
                 that.processTypeData(type);
                 that.getDefaultMarkers(firstTypePos);
             },
@@ -84,13 +89,11 @@ Page({
             types: types,
             currentIndex:types[0].id
         })
-        console.log(types);
     },
 
     //首次加载时获取默认的第一个类别的标记
     getDefaultMarkers: function(data){
         var firstPos = [];
-        console.log(this.data.types[0].icon);
         var iconPath = '../../images/location.png';
         for(var key in data){
             var temp = {
