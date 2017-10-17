@@ -11,17 +11,17 @@
         <view class="item" wx:if="{{location.stars.length}}">
             <image src="/images/recom.png"></image>
             <view class="content">
-                <text>推荐指数</text>
+                <text>Herpink推荐指数</text>
                 <template is="stars" data="{{stars:location.stars}}"/>
             </view>
         </view>
         <view class="item" catchtap="showPos" data-name="{{location.name}}" data-long="{{location.longitude}}" data-lati="{{location.latitude}}">
             <image src="/images/pos.png"></image>
-            <text class="content">具体位置：{{location.position}}</text>
+            <text class="content">导航：{{location.position}}</text>
         </view>
         <view wx:if="{{location.phonenum}}" class="item" bindtap="callTel" data-phonenum="{{location.phonenum}}">
             <image src="/images/phone.png"></image>
-            <text class="content">联系方式：{{location.phonenum}}</text>
+            <text class="content">点击拨打：{{location.phonenum}}</text>
         </view>
     </view>
 

@@ -19,7 +19,7 @@ page{
 .welcome{
     margin-top: 160rpx;
     text-align: center;
-    font-size: 40rpx;
+    font-size: 50rpx;
     font-weight: 700;
 }
 
@@ -34,7 +34,7 @@ page{
 
 .enter{
     line-height: 80rpx;
-    font-size: 24rpx;
+    font-size: 32rpx;
     font-weight: 700;
     letter-spacing: 3rpx;
 }
@@ -42,7 +42,7 @@ page{
 
 .footer{
     position: fixed;
-    bottom: 100rpx;
+    bottom: 50rpx;
     left: 0;
     width: 100%;
     text-align: center;

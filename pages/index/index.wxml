@@ -1,11 +1,14 @@
 <!--index.wxml-->
+
+
 <view class="container">
-  <scroll-view scroll-x="true" class="category">
+<!--<image src="/images/women.png" class='user'></image>-->
+  <scroll-view scroll-x="true" class="category" wx:if="{{types.length}}">
     <block wx:for="{{types}}" wx:for-item="type">
-        <view class="item {{currentIndex===type.id? 'active' :''}}" data-index="{{index}}" data-typeId="{{type.id}}" bindtap="switchCategory">{{type.name}}</view>
+        <view class="item {{currentIndex===type.id? 'active' :''}}" data-index="{{index}}" data-typeId="{{type.id}}" data-typeName="{{type.name}}" bindtap="switchCategory">{{type.name}}</view>
     </block>
   </scroll-view>
-  <view class="map-container">
-     <map id="herpinkMap" controls="{{controls}}" show-location longitude="{{defaultLongitude}}" latitude="{{defaultLatitude}}" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
-  </view>
+  <!--<view class="map-container">-->
+     <map id="herpinkMap" controls="{{controls}}" show-location longitude="{{defaultLongitude}}" latitude="{{defaultLatitude}}" scale="14" bindcontroltap="controltap" markers="{{markers}}" bindcallouttap="callouttap" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location></map>
+  <!--</view>-->
 </view>

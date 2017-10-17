@@ -1,9 +1,9 @@
 <!--pages/welcome/welcome.wxml-->
 <view class="container">
     <image src="/images/logo-small.png" class="logo"></image>
-    <text class="welcome">欢迎使用粉红地图</text>
+    <text class="welcome">Herpink女人地图</text>
     <view class="enter-container" bindtap="enter">
         <text class="enter">点击进入</text>
     </view>
-    <text class="footer">@2017武汉爱品客公司出品</text>
+    <text class="footer">@2017 爱品克科技(武汉)股份有限公司出品</text>
 </view>

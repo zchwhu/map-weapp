@@ -34,7 +34,7 @@ Page{
     padding-left: 20rpx;
     background-color: #fff;
     border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; 
 }
 
 .item{
@@ -64,7 +64,7 @@ Page{
 .detail{
     display: flex;
     flex-direction: column;
-    padding-left: 20rpx;
+    padding-left: 20rpx; 
     background-color: #fff;
     border-top: 1px solid #ddd;
 }
